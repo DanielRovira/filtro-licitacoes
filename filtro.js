@@ -15,9 +15,10 @@ function get_elements_by_inner(words) {
         })
     })
 
-    column.firstChild.remove()
+    // column.firstChild.remove()
+    column.firstChild.innerHTML = ""
     res.forEach((elem) => {
-        column.appendChild(elem)
+        column.firstChild.appendChild(elem)
     })
     return
 }
