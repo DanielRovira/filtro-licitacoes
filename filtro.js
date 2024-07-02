@@ -1,9 +1,8 @@
 
-
 function get_elements_by_inner(words) {
     let res = []
-    let column = document.getElementsByClassName('row mx-1 mt-5')[0];
-    let elems = [...document.getElementsByClassName('sc-caiLqq eUEOWK col-md-11')];
+    const column = document.getElementsByClassName('row mx-1 mt-5')[0];
+    const elems = [...document.getElementsByClassName('sc-caiLqq eUEOWK col-md-11')];
 
     words.forEach((word) => {
         let normalizeWord = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
@@ -14,7 +13,7 @@ function get_elements_by_inner(words) {
             }
         })
     })
-
+    console.log(res)
     // column.firstChild.remove()
     column.firstChild.innerHTML = ""
     res.forEach((elem) => {
