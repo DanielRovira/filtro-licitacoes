@@ -1,12 +1,12 @@
 const filterButton = document.getElementById("filterButton")
 
 let list = [
-    "drenagem",
-    "abastecimento",
+    "DRENAGEM",
+    "ABASTECIMENTO",
     "SANEAMENTO",
-    "ELEVATÓRIA",
+    "ELEVATORIA",
     "TRATAMENTO",
-    "esgot",
+    "ESGOT",
     "ADUTOR"
 ]
 
