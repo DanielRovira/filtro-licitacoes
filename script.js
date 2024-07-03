@@ -21,8 +21,14 @@ let states = [
     "PA"
 ]
 
+let situation = [
+    "NOVA",
+    "URGENTE",
+    "EDITAL"
+]
+
 filterButton.addEventListener('click', async (event) => {
-    function get_elements_by_inner(words, states) {
+    function get_elements_by_inner(words, states, situation) {
         let res = []
         const elems = [...document.getElementsByClassName('sc-caiLqq eUEOWK col-md-11')];
         const counter = document.getElementsByClassName('col-md-12 d-flex align-items-center justify-content-end text-secondary')[0];
@@ -32,7 +38,11 @@ filterButton.addEventListener('click', async (event) => {
             elems.forEach((elem) => { 
                 let selected = elem.firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
                 elem.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = 'none'
-                if(selected.includes(normalizeWord) && !res.includes(elem) && states.includes(elem.parentElement.parentElement.children[4].children[1].getElementsByTagName("span")[0].innerText)) {
+                if (!res.includes(elem)
+                    && selected.includes(normalizeWord)
+                    && states.includes(elem.parentElement.parentElement.children[4].children[1].getElementsByTagName("span")[0].innerText)
+                    && situation.includes(elem.parentElement.parentElement.children[1].children[3].firstChild.innerText)
+                ) {
                     res.push(elem)
                 }
             })
@@ -48,7 +58,7 @@ filterButton.addEventListener('click', async (event) => {
         })
         counter.firstChild.innerText = `Total de ${res.length} licitações.`
         // console.log(res)
-        // console.log(res[0].parentElement.parentElement.children[4].children[1].getElementsByTagName("span")[0].innerText)
+        // console.log(res[0].parentElement.parentElement.children[1].children[3].firstChild.innerText)
     }
 
     event.preventDefault();
@@ -59,7 +69,7 @@ filterButton.addEventListener('click', async (event) => {
         target: { tabId: tab.id },
         // files : [ "filter.js" ],
         func: get_elements_by_inner,
-        args: [words, states]
+        args: [words, states, situation]
 
     });
 
