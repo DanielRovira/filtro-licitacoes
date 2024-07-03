@@ -1,0 +1,26 @@
+{
+    "words": [
+        "DRENAGEM",
+        "ABASTECIMENTO",
+        "SANEAMENTO",
+        "ELEVATORIA",
+        "TRATAMENTO",
+        "ESGOT",
+        "ADUTOR"
+    ],
+    "states": [
+        "RN",
+        "AL",
+        "SE",
+        "PE",
+        "PI",
+        "PB",
+        "CE",
+        "PA"
+    ],
+    "situation": [
+        "NOVA",
+        "URGENTE",
+        "EDITAL"
+    ]
+}

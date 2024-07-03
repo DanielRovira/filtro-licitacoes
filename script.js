@@ -1,31 +1,5 @@
+import data from "./filters.json" with { type: "json" }
 const filterButton = document.getElementById("filterButton")
-
-let words = [
-    "DRENAGEM",
-    "ABASTECIMENTO",
-    "SANEAMENTO",
-    "ELEVATORIA",
-    "TRATAMENTO",
-    "ESGOT",
-    "ADUTOR"
-]
-
-let states = [
-    "RN",
-    "AL",
-    "SE",
-    "PE",
-    "PI",
-    "PB",
-    "CE",
-    "PA"
-]
-
-let situation = [
-    "NOVA",
-    "URGENTE",
-    "EDITAL"
-]
 
 filterButton.addEventListener('click', async (event) => {
     function get_elements_by_inner(words, states, situation) {
@@ -50,14 +24,12 @@ filterButton.addEventListener('click', async (event) => {
 
         res.forEach((re) => {
             elems.forEach((elem) => {
-                // if (re === elem && states.includes(re.parentElement.parentElement.children[4].children[1].getElementsByTagName("span")[0].innerText)) {
                 if (re === elem) {
                     elem.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = 'flex'
                 }
             })
         })
         counter.firstChild.innerText = `Total de ${res.length} licitações.`
-        // console.log(res)
         // console.log(res[0].parentElement.parentElement.children[1].children[3].firstChild.innerText)
     }
 
@@ -69,7 +41,7 @@ filterButton.addEventListener('click', async (event) => {
         target: { tabId: tab.id },
         // files : [ "filter.js" ],
         func: get_elements_by_inner,
-        args: [words, states, situation]
+        args: [data.words, data.states, data.situation]
 
     });
 
