@@ -14,13 +14,14 @@ filterButton.addEventListener('click', async (event) => {
     function get_elements_by_inner(words) {
         let res = []
         const elems = [...document.getElementsByClassName('sc-caiLqq eUEOWK col-md-11')];
+        const counter = document.getElementsByClassName('col-md-12 d-flex align-items-center justify-content-end text-secondary')[0];
     
         words.forEach((word) => {
             let normalizeWord = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
             elems.forEach((elem) => { 
                 let selected = elem.firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
                 elem.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = 'none'
-                if(selected.includes(normalizeWord)) {
+                if(selected.includes(normalizeWord) && !res.includes(elem)) {
                     res.push(elem)
                 }
             })
@@ -33,6 +34,8 @@ filterButton.addEventListener('click', async (event) => {
                 }
             })
         })
+        counter.firstChild.innerText = `Total de ${res.length} licitações.`
+        console.log(res)
     }
 
     event.preventDefault();
