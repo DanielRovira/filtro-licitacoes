@@ -5,6 +5,14 @@
     "manifest_version": 3,
     "permissions": ["activeTab", "scripting"],
     "action": {
-        "default_popup": "index.html"
-    }
+        "default_title": "Click to show an alert"
+      },
+    "web_accessible_resources":[{
+          "resources": [ "filters.json" ],
+          "matches": ["<all_urls>"],
+          "extension_ids": []
+      }],
+    "background": {
+        "service_worker": "script.js"
+      }
 }

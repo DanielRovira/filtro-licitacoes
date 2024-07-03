@@ -1,8 +1,14 @@
-import data from "./filters.json" with { type: "json" }
-const filterButton = document.getElementById("filterButton")
+// import data from "./filters.json" with { type: "json" }
+//const filterButton = document.getElementById("filterButton")
 
-filterButton.addEventListener('click', async (event) => {
-    function get_elements_by_inner(words, states, situation) {
+chrome.action.onClicked.addListener((tab) => {
+
+    async function Filter() {
+        data = await fetch(chrome.runtime.getURL("filters.json"))
+            .then((response) => response.json())
+        let words = data.words
+        let states = data.states
+        let situation = data.situation
         let res = []
         const elems = [...document.getElementsByClassName('sc-caiLqq eUEOWK col-md-11')];
         const counter = document.getElementsByClassName('col-md-12 d-flex align-items-center justify-content-end text-secondary')[0];
@@ -33,16 +39,15 @@ filterButton.addEventListener('click', async (event) => {
         // console.log(res[0].parentElement.parentElement.children[1].children[3].firstChild.innerText)
     }
 
-    event.preventDefault();
-
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
+    // event.preventDefault();
+    // const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
 
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
         // files : [ "filter.js" ],
-        func: get_elements_by_inner,
-        args: [data.words, data.states, data.situation]
-
+        func: Filter,
+        // args: [data.words, data.states, data.situation]
+    
     });
-
 });
+
