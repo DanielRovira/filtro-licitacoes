@@ -35,7 +35,7 @@ chrome.action.onClicked.addListener((tab) => {
                 }
             })
         })
-        counter.firstChild.innerText = `Total de ${res.length} licitações.`
+        counter.firstChild.innerText = `Total de ${res.length} licitaç${res.length === 1 ? "ão" : "ões"}.`
         // console.log(res[0].parentElement.parentElement.children[1].children[3].firstChild.innerText)
     }
 
