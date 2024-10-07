@@ -10,13 +10,9 @@
     ],
     "states": [
         "RN",
-        "AL",
-        "SE",
         "PE",
-        "PI",
         "PB",
-        "CE",
-        "PA"
+        "CE"
     ],
     "situation": [
         "NOVA",
