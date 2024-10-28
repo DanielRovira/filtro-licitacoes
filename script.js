@@ -10,8 +10,8 @@ chrome.action.onClicked.addListener((tab) => {
         let states = data.states
         let situation = data.situation
         let res = []
-        const elems = [...document.getElementsByClassName('sc-jcFjpl dcWlyk col-md-11')];   // Um elemento acima da div que contém o texto da descrição do objeto.
-        const counter = document.getElementsByClassName('col-md-12 d-flex align-items-center justify-content-end text-secondary')[0];
+        const elems = [...document.getElementsByClassName('sc-caiLqq eUEOWK col-md-11')];   // Um elemento acima da div que contém o texto da descrição do objeto.
+        const counter = document.getElementsByClassName('col-md-12 d-flex align-items-center justify-content-end text-secondary')[0]; // Um elemento acima da div que contém o texto do contador.
     
         words.forEach((word) => {
             let normalizeWord = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
